@@ -1,0 +1,37 @@
+#
+# Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license: https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
+# Copyright (C) 2021+ WarheadCore <https://github.com/WarheadCore>
+#
+
+[worldserver]
+########################################
+# LowLevelArena module configuration
+########################################
+#
+#    LLA.Enable
+#        Description: Enable module
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+LLA.Enable = 0
+
+#
+# NOT IMPLEMENT
+#
+
+#LLA.Reward.Enable = 0
+#LLA.Levels.10.14.Configurable = 1,10,5
+#LLA.Levels.15.19.Configurable = 1,10,5
+#LLA.Levels.20.24.Configurable = 1,10,5
+#LLA.Levels.25.29.Configurable = 1,10,5
+#LLA.Levels.30.34.Configurable = 1,10,5
+#LLA.Levels.35.39.Configurable = 1,10,5
+#LLA.Levels.40.44.Configurable = 1,10,5
+#LLA.Levels.45.49.Configurable = 1,10,5
+#LLA.Levels.50.54.Configurable = 1,10,5
+#LLA.Levels.55.59.Configurable = 1,10,5
+#LLA.Levels.60.64.Configurable = 1,10,5
+#LLA.Levels.65.69.Configurable = 1,10,5
+#LLA.Levels.70.74.Configurable = 1,10,5
+#LLA.Levels.75.79.Configurable = 1,10,5
