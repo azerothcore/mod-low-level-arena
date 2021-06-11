@@ -8,12 +8,12 @@
 #include "Config.h"
 #include "DisableMgr.h"
 #include "GroupMgr.h"
+#include "Language.h"
 #include "Log.h"
 #include "Player.h"
 #include "StringConvert.h"
 #include "StringFormat.h"
 #include "Tokenize.h"
-#include "Language.h"
 //#include <unordered_map>
 //#include <tuple>
 #include <unordered_set>
