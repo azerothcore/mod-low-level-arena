@@ -17,19 +17,17 @@ class LLA
     LLA() = default;
     ~LLA() = default;
 
+    LLA(LLA const&) = delete;
+    LLA(LLA&&) = delete;
+    LLA& operator= (LLA const&) = delete;
+    LLA& operator= (LLA&&) = delete;
+
 public:
     static LLA* instance();
 
     void Reward(Battleground* bg, TeamId winnerTeamId);
     void LoadConfig();
     void AddQueue(Player* leader, uint8 arenaType, bool joinAsGroup);
-
-    LLA(LLA const&) = delete;
-    LLA(LLA&&) = delete;
-    LLA& operator= (LLA const&) = delete;
-    LLA& operator= (LLA&&) = delete;
-
-private:
 };
 
 #define sLLA LLA::instance()
