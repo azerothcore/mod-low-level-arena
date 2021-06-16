@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# CUSTOM
+#
+
+DB_WORLD_CUSTOM_PATHS+=($LLA_PATH_ROOT"/data/sql/db-world/")
