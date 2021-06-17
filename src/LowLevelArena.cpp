@@ -5,12 +5,14 @@
 
 #include "LowLevelArena.h"
 #include "BattlegroundMgr.h"
+#include "Chat.h"
 #include "Config.h"
 #include "DisableMgr.h"
 #include "GroupMgr.h"
 #include "Language.h"
 #include "Log.h"
 #include "Player.h"
+#include "ScriptMgr.h"
 #include "StringConvert.h"
 #include "StringFormat.h"
 #include "Tokenize.h"
@@ -245,7 +247,7 @@ void LLA::LoadConfig()
     auto const& keys = sConfigMgr->GetKeysByString("LLA.Levels.");*/
 }
 
-void LLA::Reward(Battleground* bg, TeamId winnerTeamId)
+void LLA::Reward(Battleground* /*bg*/, TeamId /*winnerTeamId*/)
 {
     //LOG_DEBUG("module.lla", "> Reward start");
 
