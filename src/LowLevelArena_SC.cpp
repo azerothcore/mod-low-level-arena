@@ -150,5 +150,5 @@ void AddSC_LowLevelArena()
 {
     //new LowLevelArena_BG();
     new LowLevelArena_Command();
-    new LowLevelArena_World();
+    //new LowLevelArena_World();
 }
