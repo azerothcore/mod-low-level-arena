@@ -69,7 +69,7 @@ public:
         if (!sConfigMgr->GetOption<bool>("LLA.Enable", false))
         {
             handler.PSendSysMessage("> Module disable!");
-            return false;
+            return true;
         }
 
         if (arenaType.empty())
