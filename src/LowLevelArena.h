@@ -27,7 +27,7 @@ public:
 
     void Reward(Battleground* bg, TeamId winnerTeamId);
     void LoadConfig();
-    void AddQueue(Player* leader, uint8 arenaType, bool joinAsGroup);
+    void AddQueue(Player* leader);
 };
 
 #define sLLA LLA::instance()
