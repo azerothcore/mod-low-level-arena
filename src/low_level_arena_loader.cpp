@@ -9,16 +9,10 @@
 // From SC
 void AddSC_LowLevelArena();
 
-// Old api for AC
-void AddLowLevelArenaScripts()
+// Add all
+void Addmod_low_level_arenaScripts()
 {
     AddSC_LowLevelArena();
 }
-
-// New api for WH
-// void Addmod_low_level_arenaScripts()
-// {
-//     AddSC_LowLevelArena();
-// }
 
 #endif /* _LOW_LEVEL_ARENA_LOADER_H_ */
