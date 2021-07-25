@@ -3,22 +3,11 @@
  * Copyright (C) 2021+ WarheadCore <https://github.com/WarheadCore>
  */
 
-#ifndef _LOW_LEVEL_ARENA_LOADER_H_
-#define _LOW_LEVEL_ARENA_LOADER_H_
-
 // From SC
 void AddSC_LowLevelArena();
 
-// Old api for AC
-void AddLowLevelArenaScripts()
+// Add all
+void Addmod_low_level_arenaScripts()
 {
     AddSC_LowLevelArena();
 }
-
-// New api for WH
-// void Addmod_low_level_arenaScripts()
-// {
-//     AddSC_LowLevelArena();
-// }
-
-#endif /* _LOW_LEVEL_ARENA_LOADER_H_ */
