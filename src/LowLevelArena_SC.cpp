@@ -11,10 +11,7 @@
 #include "Player.h"
 #include "ScriptedGossip.h"
 
-#ifndef STRING_VIEW_FMT
-#define STRING_VIEW_FMT "%.*s"
-#define STRING_VIEW_FMT_ARG(str) static_cast<int>((str).length()), (str).data()
-#endif
+using namespace Acore::ChatCommands;
 
 //class LowLevelArena_BG : public BGScript
 //{
@@ -41,16 +38,16 @@ class LowLevelArena_Command : public CommandScript
 public:
     LowLevelArena_Command() : CommandScript("LowLevelArena_Command") {}
 
-    std::vector<ChatCommand> GetCommands() const override
+    ChatCommandTable GetCommands() const override
     {
-        static std::vector<ChatCommand> llaCommandTable =
+        static ChatCommandTable llaCommandTable =
         {
-            { "queue",  SEC_PLAYER, false,  &HandleLLAQueue, "" },
+            { "queue",  HandleLLAQueue, SEC_PLAYER, Console::No },
         };
 
-        static std::vector<ChatCommand> commandTable =
+        static ChatCommandTable commandTable =
         {
-            { "lla",    SEC_PLAYER, false, nullptr, "", llaCommandTable }
+            { "lla", llaCommandTable }
         };
 
         return commandTable;
@@ -72,7 +69,7 @@ public:
         return true;
     }
 
-    static bool HandleLLAQueue(ChatHandler* handler, const char* /*args*/)
+    static bool HandleLLAQueue(ChatHandler* handler)
     {
         Player* player = handler->GetSession()->GetPlayer();
         if (!player)
