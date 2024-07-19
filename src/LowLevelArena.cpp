@@ -70,7 +70,7 @@ void LLA::AddQueue(Player* leader)
     BattlegroundTypeId bgTypeId = bgt->GetBgTypeID();
 
     // expected bracket entry
-    PvPDifficultyEntry const* bracketEntry = GetBattlegroundBracketByLevel(bgt->GetMapId(), leader->getLevel());
+    PvPDifficultyEntry const* bracketEntry = GetBattlegroundBracketByLevel(bgt->GetMapId(), leader->GetLevel());
     if (!bracketEntry)
         return;
 
@@ -240,7 +240,7 @@ void LLA::Reward(Battleground* /*bg*/, TeamId /*winnerTeamId*/)
 
     //for (auto const& [guid, player] : bg->GetPlayers())
     //{
-    //    auto bracketEntry = GetBattlegroundBracketByLevel(bg->GetMapId(), player->getLevel());
+    //    auto bracketEntry = GetBattlegroundBracketByLevel(bg->GetMapId(), player->GetLevel());
     //    auto levelsString = Warhead::ToString(bracketEntry->minLevel) + "." + Warhead::ToString(bracketEntry->minLevel);
     //    auto configIsEnable = Warhead::StringFormat("LLA.%s.Enable", levelsString.c_str());
 
