@@ -152,7 +152,7 @@ void LLA::AddQueue(Player* leader)
 
         LOG_DEBUG("bg.battleground", "Battleground: player joined queue for arena, skirmish, bg queue type {} bg type {}: {}, NAME {}", bgQueueTypeId, bgTypeId, leader->GetGUID().ToString(), leader->GetName());
 
-        handler.PSendSysMessage("# You entered arena skirmish queue %u/%u (%uv%u)",
+        handler.PSendSysMessage("# You entered arena skirmish queue {}/{} ({}v{})",
             bracketEntry->minLevel, bracketEntry->maxLevel, arenaType, arenaType);
     }
     // check if group can queue:
@@ -210,7 +210,7 @@ void LLA::AddQueue(Player* leader)
             sScriptMgr->OnPlayerJoinArena(member);
         });
 
-        handler.PSendSysMessage("# You entered arena skirmish queue %u/%u (%uv%u) in group",
+        handler.PSendSysMessage("# You entered arena skirmish queue {}/{} ({}v{}) in group",
             bracketEntry->minLevel, bracketEntry->maxLevel, arenaType, arenaType);
     }
 
