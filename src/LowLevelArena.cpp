@@ -102,7 +102,7 @@ void LLA::AddQueue(Player* leader)
     {
         if (member->InBattleground()) // currently in battleground
             err = ERR_BATTLEGROUND_NOT_IN_BATTLEGROUND;
-        else if (member->isUsingLfg()) // using lfg system
+        else if (member->IsUsingLfg()) // using lfg system
             err = ERR_LFG_CANT_USE_BATTLEGROUND;        
         else if (member->InBattlegroundQueue())
             err = ERR_BATTLEGROUND_TOO_MANY_QUEUES;        
