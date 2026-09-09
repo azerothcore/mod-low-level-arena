@@ -26,6 +26,25 @@
 //    std::unordered_map<uint32 /*min level*/, LLAReward> _arenaRewards;
 //}
 
+namespace
+{
+    // BattlegroundQueue::AddGroup asserts that the queue doesn't know the player yet, and the player
+    // side checks can't see that: a queue entry left behind without a matching player queue slot
+    // passes all of them and turns this command into a crash. Drop such an orphan and report whether
+    // the player is safe to hand to AddGroup.
+    bool CanEnterBattlegroundQueue(BattlegroundQueue& bgQueue, Player* player, BattlegroundQueueTypeId bgQueueTypeId)
+    {
+        GroupQueueInfo ginfo;
+        if (!bgQueue.GetPlayerGroupInfoData(player->GetGUID(), &ginfo))
+            return true;
+
+        if (!ginfo.IsInvitedToBGInstanceGUID && !player->InBattlegroundQueueForBattlegroundQueueType(bgQueueTypeId))
+            bgQueue.RemovePlayer(player->GetGUID(), false);
+
+        return !bgQueue.GetPlayerGroupInfoData(player->GetGUID(), &ginfo);
+    }
+}
+
 LLA* LLA::instance()
 {
     static LLA instance;
@@ -118,6 +137,10 @@ void LLA::AddQueue(Player* leader)
         if (!member->HasFreeBattlegroundQueueId())
             err = ERR_BATTLEGROUND_NONE;
 
+        // check the queue itself, the checks above only look at player side state
+        if (!CanEnterBattlegroundQueue(bgQueue, member, bgQueueTypeId))
+            err = ERR_BATTLEGROUND_JOIN_FAILED;
+
         if (err <= 0)
         {
             WorldPacket data;
@@ -168,11 +191,17 @@ void LLA::AddQueue(Player* leader)
         err = group->CanJoinBattlegroundQueue(bgt, bgQueueTypeId, arenaType, arenaType, false, arenaSlot);
 
         // Check queue group members
-        if (err)
+        if (err > 0)
         {
-            group->DoForAllMembers([&bgQueue, &err](Player* member)
+            group->DoForAllMembers([&bgQueue, &err, bgQueueTypeId](Player* member)
             {
                 if (bgQueue.IsPlayerInvitedToRatedArena(member->GetGUID()))
+                {
+                    err = ERR_BATTLEGROUND_JOIN_FAILED;
+                }
+
+                // check the queue itself, CanJoinBattlegroundQueue only looks at player side state
+                if (!CanEnterBattlegroundQueue(bgQueue, member, bgQueueTypeId))
                 {
                     err = ERR_BATTLEGROUND_JOIN_FAILED;
                 }
